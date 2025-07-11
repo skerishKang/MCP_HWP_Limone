@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "advanced-hwp": {
+      "command": "python",
+      "args": [
+        "G:/Ddrive/BatangD/task/workdiary/33MCP_HWP/advanced_hwp_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "G:/Ddrive/BatangD/task/workdiary/33MCP_HWP"
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+mcp>=1.0.0
+fastmcp>=0.1.0
+pywin32>=306
+pythoncom
