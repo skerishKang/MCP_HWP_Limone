@@ -50,3 +50,8 @@ test_document.hwp
 # Temporary files
 *.tmp
 *.temp
+
+# Markdown files (개인 메모/대화 내용)
+*.md
+!README.md
+!INSTALLATION_GUIDE.md
