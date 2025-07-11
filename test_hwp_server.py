@@ -90,9 +90,9 @@ def test_hwp_server():
         # 6. 문서 정보 조회 테스트
         logger.info("6. 문서 정보 조회 테스트")
         try:
-            page_count = hwp_controller.hwp.GetPageCount()
-            text_len = hwp_controller.hwp.GetTextLen()
-            logger.info(f"✅ 문서 정보 조회 성공 - 페이지: {page_count}, 텍스트 길이: {text_len}")
+            page_count = hwp_controller.hwp.PageCount  # 속성으로 접근
+            current_pos = hwp_controller.hwp.GetPos()
+            logger.info(f"✅ 문서 정보 조회 성공 - 페이지: {page_count}, 현재 위치: {current_pos}")
         except Exception as e:
             logger.error(f"❌ 문서 정보 조회 실패: {e}")
             return False

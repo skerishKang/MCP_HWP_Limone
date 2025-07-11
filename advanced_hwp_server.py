@@ -350,21 +350,36 @@ def get_document_info() -> str:
     try:
         hwp_controller.check_initialization()
         
-        # 문서 정보 수집
+        # 문서 정보 수집 (실제 API에 맞게 수정)
+        try:
+            page_count = hwp_controller.hwp.PageCount  # 속성으로 접근
+        except:
+            page_count = "Unknown"
+            
+        try:
+            current_pos = hwp_controller.hwp.GetPos()
+        except:
+            current_pos = "Unknown"
+            
+        # 현재 페이지는 계산으로 구하기
+        try:
+            # ListCount를 사용해서 전체 리스트 정보 확인
+            list_count = getattr(hwp_controller.hwp, 'ListCount', 0)
+        except:
+            list_count = "Unknown"
+        
         info = {
-            "page_count": hwp_controller.hwp.GetPageCount(),
-            "current_page": hwp_controller.hwp.GetCurrentPage(),
-            "total_text_len": hwp_controller.hwp.GetTextLen(),
-            "current_pos": hwp_controller.hwp.GetPos(),
+            "page_count": page_count,
+            "current_pos": current_pos,
+            "list_count": list_count,
             "document_name": hwp_controller.current_document or "새 문서"
         }
         
         result = f"""문서 정보:
 - 문서명: {info['document_name']}
 - 총 페이지 수: {info['page_count']}
-- 현재 페이지: {info['current_page']}
-- 총 텍스트 길이: {info['total_text_len']}
-- 현재 커서 위치: {info['current_pos']}"""
+- 현재 커서 위치: {info['current_pos']}
+- 리스트 개수: {info['list_count']}"""
         
         logger.info("문서 정보 조회 완료")
         return result
